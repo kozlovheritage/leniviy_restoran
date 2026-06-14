@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ленивый ресторан | Сборник заготовок Веры Малыгиной</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ---------- Базовые стили ---------- */
+:root{
+  --cream:#F5EFE6;
+  --warm-white:#FBF8F2;
+  --white:#FFFFFF;
+  --pink:#D4768A;
+  --pink-light:#EDCAD2;
+  --pink-dark:#B85A6D;
+  --yellow:#EDE8A8;
+  --text:#5B5A5A;
+  --text-mid:#5C4F47;
+  --text-light:#8C7D74;
+  --border:rgba(44,36,32,0.08);
+  --shadow:0 4px 32px rgba(44,36,32,0.08);
+  --shadow-lg:0 16px 64px rgba(44,36,32,0.14);
+  --r:20px;
+  --r-sm:12px;
+  --transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+*,::after,::before{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--white);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.4;
+}
+.container{max-width:1180px;margin:0 auto;padding:0 28px}
+h1{font-family:'Inter',sans-serif;font-size:clamp(2.6rem,5vw,4rem);font-weight:700;line-height:1.1}
+h2{font-family:'Inter',sans-serif;font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:700;line-height:1.1}
+h3{font-size:1.2rem;font-weight:700;margin-bottom:.6rem}
+p{font-size:1rem;line-height:1.5;color:var(--text-mid);margin-bottom:1rem}
+.label{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 14px;border-radius:50px;
+  background:rgba(212,118,138,.12);color:var(--pink) !important;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 32px;border-radius:50px;font-family:inherit;font-size:1rem;font-weight:700;
+  text-decoration:none;border:none;cursor:pointer;transition:var(--transition);
+  background:var(--pink) !important;color:#fdf3f3 !important;box-shadow:0 8px 32px rgba(212,118,138,.35);
+}
+.btn:hover{background:var(--pink-dark) !important;transform:translateY(-3px)}
+.btn-ghost{background:transparent !important;color:var(--pink) !important;border:2px solid var(--pink) !important;box-shadow:none}
+.btn-ghost:hover{background:var(--pink) !important;color:#fdf3f3 !important}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+/* Шапка */
+header{position:sticky;top:0;left:0;width:100%;z-index:1000;padding:12px 0;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;justify-content:space-between;align-items:center;min-height:56px}
+.logo{font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:600;color:var(--text);text-decoration:none}
+.logo span{color:var(--pink)}
+nav ul{display:flex;list-style:none;gap:2px;align-items:center}
+nav ul li a{color:var(--text-mid);text-decoration:none;font-size:.85rem;font-weight:600;padding:7px 13px;border-radius:50px}
+nav ul li a:hover{color:var(--pink);background:rgba(212,118,138,.08)}
+nav ul li .btn{padding:8px 20px;font-size:.85rem}
+.mobile-btn{display:none;background:0 0;border:none;font-size:1.4rem;color:var(--text);cursor:pointer}
+
+/* HERO — две колонки, справа пустышка */
+.hero{padding-top:30px;padding-bottom:80px;background:var(--white);position:relative}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mid);margin-bottom:1rem}
+.hero-eyebrow::before{content:'';width:32px;height:2px;background:var(--pink);border-radius:2px}
+.hero-title span{color:var(--pink)}
+.hero-sub{font-size:1.1rem;color:var(--text-mid);margin:1rem 0 1.5rem}
+.hero-highlight{background:var(--warm-white);border-radius:var(--r-sm);padding:16px 20px;margin-top:24px;border:1px solid var(--border);font-weight:600}
+.hero-highlight span{color:var(--pink)}
+.hero-photo-col{position:relative}
+.placeholder-photo{
+  background:var(--cream);
+  border-radius:32px;
+  width:100%;
+  aspect-ratio:1 / 1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text-light);
+  font-size:1.2rem;
+  box-shadow:var(--shadow-lg);
+}
+
+/* Сетки */
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{
+  background:var(--white);
+  border-radius:var(--r);
+  padding:28px 24px;
+  border:1px solid var(--border);
+  transition:var(--transition);
+  box-shadow:var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.card .icon{font-size:2rem;margin-bottom:1rem;color:var(--pink)}
+.card img {
+  width: 100%;
+  height: 260px; /* фиксированная высота как на втором фото */
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+}
+.card .card-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Аккордеон */
+.accordion-item{margin-bottom:12px;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--border);background:var(--white)}
+.accordion-title{padding:18px 24px;cursor:pointer;font-weight:700;display:flex;justify-content:space-between;align-items:center;font-size:1.2rem}
+.accordion-title:hover{background:rgba(212,118,138,.04)}
+.accordion-title .icon{width:28px;height:28px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.accordion-title.active .icon{background:var(--pink);color:#fff;transform:rotate(45deg)}
+.accordion-content{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.accordion-content.active{max-height:300px}
+.accordion-inner{padding:0 24px 24px}
+.recipe-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-top:12px}
+.recipe-list li{background:var(--cream);padding:6px 14px;border-radius:50px;font-size:.85rem}
+
+/* Стили секций */
+section {
+  margin-bottom: 20px;
+}
+.section-container {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.section-header .label {
+  margin-bottom: 12px;
+}
+.section-header h2 {
+  margin-bottom: 12px;
+}
+.section-header p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-light);
+}
+
+.benefits-cta{text-align:center;margin-top:40px}
+.price-badge{font-size:2.2rem;font-weight:700;color:var(--pink);margin:1rem 0}
+
+/* Отзывы */
+.reviews-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
+.review-card{background:var(--white);border-radius:var(--r);padding:16px;width:260px;border:1px solid var(--border);transition:var(--transition)}
+.review-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.screenshot-placeholder{background:var(--cream);height:180px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--text-light);margin-bottom:12px;font-size:.9rem}
+
+/* FAQ */
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-item{margin-bottom:12px;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--border);background:var(--white)}
+.faq-question{padding:18px 24px;cursor:pointer;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.faq-question:hover{background:rgba(212,118,138,.04)}
+.faq-question .faq-icon{width:28px;height:28px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.faq-question.active .faq-icon{background:var(--pink);color:#fff;transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.faq-answer.active{max-height:300px}
+.faq-answer-inner{padding:0 24px 20px}
+.faq-answer-inner p{margin:0}
+
+/* Футер */
+footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+.foot-brand .logo{color:var(--text);margin-bottom:.8rem;display:block}
+.foot-brand p{font-size:.9rem;color:var(--text-light)}
+.foot-col h4{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:1rem}
+.foot-col ul{list-style:none}
+.foot-col ul li{margin-bottom:.6rem}
+.foot-col a{color:var(--text-mid);text-decoration:none;font-size:.85rem}
+.foot-col a:hover{color:var(--pink)}
+.foot-bottom{padding-top:20px;border-top:1px solid rgba(44,36,32,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.75rem;color:var(--text-light)}
+
+/* Модалка */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(5px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal-window{background:var(--warm-white);border-radius:var(--r);max-width:480px;width:90%;padding:32px 28px;text-align:center;box-shadow:var(--shadow-lg);position:relative;transform:scale(0.9);transition:transform .3s}
+.modal-overlay.active .modal-window{transform:scale(1)}
+.modal-window h3{font-size:1.8rem;color:var(--pink);margin-bottom:1rem}
+.close-modal{position:absolute;top:16px;right:20px;font-size:28px;cursor:pointer}
+.consent-item{display:flex;align-items:flex-start;gap:12px;margin:16px 0;text-align:left;font-size:.85rem}
+.consent-item input{margin-top:2px;width:18px;height:18px}
+.consent-item a{color:var(--pink);text-decoration:underline}
+.form-field{margin-bottom:16px;text-align:left}
+.form-field input{width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);font-family:inherit}
+
+@media (max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-photo-col{max-width:480px;margin:0 auto}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  nav{display:none}
+  nav.open{display:block;position:fixed;top:62px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);padding:16px;z-index:999}
+  nav.open ul{flex-direction:column;gap:2px}
+  .mobile-btn{display:block}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .section-container{padding-top:20px}
+  .card img {
+    height: 200px; /* чуть меньше на мобильных */
+  }
+}
+@media (max-width:576px){
+  h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container header-inner">
+<a href="#" class="logo">Вера Малыгина <span>Ленивый ресторан</span></a>
+<nav id=nav>
+<ul>
+<li><a href="#sbornik">Сборник</a></li>
+<li><a href="#reviews">Отзывы</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#" class="btn open-waitlist" style=margin-left:8px>Купить</a></li>
+</ul>
+</nav>
+<button class=mobile-btn id=mbtn aria-label=Меню>☰</button>
+</div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-inner">
+<div class="hero-content">
+<div class="hero-eyebrow reveal">Ленивый ресторан дома Веры Малыгиной</div>
+<h1 class="hero-title reveal reveal-delay-1">5 рецептов заготовок → <span>75+ рецептов</span> из них к столу!</h1>
+<p class="hero-sub reveal reveal-delay-1">Сборник основан на ресторанном методе кросс-использования продуктов, который помогает экономить время и средства на готовке</p>
+<div class="hero-actions reveal reveal-delay-2">
+<a href="#" class="btn open-waitlist">Купить сборник</a>
+</div>
+<div class="hero-highlight reveal reveal-delay-2">
+<span>🔥 Выход есть!</span> Сборник «Ленивый ресторан» — это метод, где из 1 простой заготовки мы можем собрать 15+ блюд! Быстро, вкусно и полезно!
+</div>
+</div>
+<div class="hero-photo-col reveal">
+<div class="placeholder-photo">Фото</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Вам точно нужен сборник -->
+<section class="section-container">
+<div class="container">
+<div class="section-header reveal">
+<span class="label">Проблемы</span>
+<h2>Вам точно нужен сборник, если</h2>
+</div>
+<div class="grid-2">
+<div class="card reveal"><div class="icon">❓</div><p>Вы часто задаетесь вопросом «а что приготовить сегодня?»</p></div>
+<div class="card reveal"><div class="icon">⏱️</div><p>Тратите на готовку и уборку посуды несколько часов в день!</p></div>
+<div class="card reveal"><div class="icon">🧊</div><p>Вроде холодильник полный, а есть нечего</p></div>
+<div class="card reveal"><div class="icon">🌭</div><p>Перекусываете колбасой и сосисками, но хочется более полезной и разнообразной еды</p></div>
+</div>
+</div>
+</section>
+
+<!-- Что в сборнике? (аккордеон) -->
+<section id="sbornik" class="section-container">
+<div class="container">
+<div class="section-header reveal">
+<span class="label">Содержание</span>
+<h2>Что в сборнике?</h2>
+<p>5 простых заготовок → 75+ блюд + бонус</p>
+</div>
+<div class="faq-inner" id="accordionRecipes">
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🥩 Ростбиф<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Сэндвич с ростбифом</li><li>Салат с ростбифом</li><li>Ростбиф с овощами</li><li>Паста с ростбифом</li><li>и еще 11+ блюд</li></ul></div></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🍖 Рваное мясо<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Тако</li><li>Бургеры</li><li>Рис с мясом</li><li>Запеканка</li><li>и 12+</li></ul></div></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🍗 Филе бережного запекания<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Филе с соусом</li><li>Цезарь</li><li>Теплый салат</li><li>и 13+</li></ul></div></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🥫 Мясной соус<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Болоньезе</li><li>Лазанья</li><li>Картофельная запеканка</li><li>и 14+</li></ul></div></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🥩 Полуготовая говядина<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Говядина по-французски</li><li>Строганов</li><li>Рагу</li><li>и 15+</li></ul></div></div></div>
+</div>
+<div class="card" style="margin-top:28px; text-align:center; background:var(--warm-white)">
+🎁 <strong>БОНУС:</strong> рецепты концентратов бульонов и 25+ рецептов супов для обеда!
+</div>
+<div style="text-align:center; margin-top:32px">
+<span class="price-badge">990 ₽</span><br>
+<a href="#" class="btn open-waitlist">Купить за 990 ₽</a>
+</div>
+</div>
+</section>
+
+<!-- Что изменится со сборником? -->
+<section class="section-container">
+<div class="container">
+<div class="section-header reveal">
+<span class="label">Преимущества</span>
+<h2>Что изменится со сборником?</h2>
+</div>
+<div class="grid-3">
+<div class="card reveal"><div class="icon">⏰</div><h3>Больше свободного времени</h3><p>Вместо 2 часов у плиты — 15-20 минут активного времени готовки ужина</p></div>
+<div class="card reveal"><div class="icon">💰</div><h3>Меньшие траты в магазине</h3><p>Заготовки из сборника — полезная и бюджетная альтернатива колбасе и сосискам</p></div>
+<div class="card reveal"><div class="icon">🍽️</div><h3>Разнообразие</h3><p>5 заготовок в морозилке = 75+ разных блюд для всей семьи!</p></div>
+</div>
+<div class="benefits-cta"><a href="#" class="btn open-waitlist">Купить сборник</a></div>
+</div>
+</section>
+
+<!-- Как работает сборник — с вашими фото i-12, i-13, i-14, одинаковый размер -->
+<section class="section-container">
+<div class="container">
+<div class="section-header reveal">
+<span class="label">Простой метод</span>
+<h2>Как работает сборник</h2>
+</div>
+<div class="grid-3">
+<div class="card reveal">
+<img src="https://i.ibb.co/WpNGfRSs/i-12.webp" alt="Размораживаете заготовку">
+<div class="card-text">Размораживаете заготовку</div>
+</div>
+<div class="card reveal">
+<img src="https://i.ibb.co/4wNx4sFW/i-13.webp" alt="Добавляете свежие овощи/гарнир">
+<div class="card-text">Добавляете свежие овощи/гарнир</div>
+</div>
+<div class="card reveal">
+<img src="https://i.ibb.co/CKwTFBJt/i-14.webp" alt="Собираете ужин за 15 минут">
+<div class="card-text">Собираете ужин за 15 минут</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Отзывы -->
+<section id="reviews" class="section-container">
+<div class="container">
+<div class="section-header reveal">
+<span class="label">Сообщество</span>
+<h2>Отзывы из клуба</h2>
+</div>
+<div class="reviews-grid">
+<div class="review-card reveal"><div class="screenshot-placeholder">⭐️ Скрин отзыва 1</div><p>“Теперь готовлю быстро!”</p></div>
+<div class="review-card reveal"><div class="screenshot-placeholder">⭐️ Скрин отзыва 2</div><p>“Муж в восторге”</p></div>
+<div class="review-card reveal"><div class="screenshot-placeholder">⭐️ Скрин отзыва 3</div><p>“Экономия времени огромная”</p></div>
+</div>
+<div class="benefits-cta"><a href="#" class="btn open-waitlist">Купить сборник</a></div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-container">
+<div class="container">
+<div class="section-header reveal">
+<span class="label">Вопросы</span>
+<h2>Часто задаваемые вопросы</h2>
+</div>
+<div class="faq-inner">
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">🤍 Я новичок, получится ли у меня?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><p>В сборнике все рецепты описаны пошагово, от ингредиентов до подачи к столу! Есть правила заморозки, хранения и разморозки.</p></div></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">🤍 Нужно ли много времени на готовку?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><p>Нет, база из 5 заготовок готовится ~2 часа, но в будни тратите по 15-20 минут на сборку блюд.</p></div></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">🤍 В семье не любят одно и то же, поможет ли сборник?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><p>Из одной заготовки вы сможете сделать разные блюда. Из одного ростбифа — 15 вариантов!</p></div></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">🤍 Подойдет ли мне сборник, если у меня маленькая морозилка?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><p>Да, 5 заготовок — немного, хватит даже 1 ящика морозилки!</p></div></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">🤍 Как оплатить из заграницы?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><p>После ввода данных на странице оплаты выберете способ «зарубежные карты», а далее нужный метод оплаты 🤗</p></div></div></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<div class="foot-grid">
+<div class="foot-brand"><a href="#" class="logo">Вера Малыгина <span>Ленивый ресторан</span></a><p>Сборник рецептов заготовок для быстрой и вкусной домашней кухни</p></div>
+<div class="foot-col"><h4>Документы</h4><ul>
+<li><a href="https://disk.yandex.ru/i/sDY8_G_OsyiZ8g" target="_blank">Реквизиты</a></li>
+<li><a href="https://disk.yandex.ru/i/TpVA_h_RWP1UyQ" target="_blank">Согласие на рассылку</a></li>
+<li><a href="https://disk.yandex.ru/i/3RzYTim7hZO0Nw" target="_blank">Согласие на обработку ПД</a></li>
+<li><a href="https://disk.yandex.ru/i/vIxEZ0HkXsj42Q" target="_blank">Политика обработки ПД</a></li>
+<li><a href="#">Оферта</a></li>
+</ul></div>
+<div class="foot-col"><h4>Контакты</h4><ul><li><a href="#">Telegram</a></li><li><a href="#">ВКонтакте</a></li><li><a href="#">Почта</a></li></ul></div>
+<div class="foot-col"><h4>О проекте</h4><ul><li><a href="#sbornik">Сборник</a></li><li><a href="#reviews">Отзывы</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+</div>
+<div class="foot-bottom"><p>© 2025 Вера Малыгина. Все права защищены.</p></div>
+</div>
+</footer>
+
+<!-- Модалка -->
+<div class="modal-overlay" id="waitlistModal">
+<div class="modal-window">
+<span class="close-modal close-waitlist">&times;</span>
+<h3>Купить сборник</h3>
+<p>Оставьте заявку, и мы пришлём ссылку на оплату</p>
+<form id="waitlistForm">
+<div class="form-field"><label>Имя</label><input type="text" name="name" required placeholder="Ваше имя"></div>
+<div class="form-field"><label>Электронная почта</label><input type="email" name="email" required placeholder="email@example.com"></div>
+<div class="form-field"><label>Номер телефона</label><input type="tel" name="phone" placeholder="+7 (___) ___-__-__"></div>
+<div class="consent-item"><input type="checkbox" id="consentPdWait" required><label for="consentPdWait">Даю <a href="https://disk.yandex.ru/i/3RzYTim7hZO0Nw" target="_blank">согласие</a> на обработку персональных данных в соответствии с <a href="https://disk.yandex.ru/i/vIxEZ0HkXsj42Q" target="_blank">политикой</a> обработки ПД</label></div>
+<div class="consent-item"><input type="checkbox" id="consentMailWait" required><label for="consentMailWait">Даю согласие на получение рассылки (<a href="https://disk.yandex.ru/i/TpVA_h_RWP1UyQ" target="_blank">согласие на рассылку</a>)</label></div>
+<div class="modal-buttons"><button type="submit" class="btn">Отправить заявку</button></div>
+</form>
+</div>
+</div>
+
+<script>
+// Мобильное меню
+const mbtn=document.getElementById("mbtn"),nav=document.getElementById("nav");
+mbtn.addEventListener("click",()=>{nav.classList.toggle("open");mbtn.textContent=nav.classList.contains("open")?"✕":"☰"});
+document.querySelectorAll("nav a").forEach(e=>e.addEventListener("click",()=>{nav.classList.remove("open");mbtn.textContent="☰"}));
+
+// Reveal анимация
+const observer=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+// Аккордеон для рецептов
+function toggleAccordion(el){
+  const parent=el.parentElement;
+  const answer=parent.querySelector(".faq-answer");
+  const isActive=el.classList.contains("active");
+  document.querySelectorAll("#accordionRecipes .faq-question.active").forEach(q=>{
+    if(q!==el){
+      q.classList.remove("active");
+      q.parentElement.querySelector(".faq-answer").classList.remove("active");
+      q.querySelector(".faq-icon").textContent="+";
+    }
+  });
+  if(!isActive){
+    el.classList.add("active");
+    answer.classList.add("active");
+    el.querySelector(".faq-icon").textContent="−";
+  } else {
+    el.classList.remove("active");
+    answer.classList.remove("active");
+    el.querySelector(".faq-icon").textContent="+";
+  }
+}
+
+// FAQ обычный
+function toggleFaq(el){
+  const parent=el.parentElement;
+  const answer=parent.querySelector(".faq-answer");
+  const isActive=el.classList.contains("active");
+  if(!isActive){
+    el.classList.add("active");
+    answer.classList.add("active");
+    el.querySelector(".faq-icon").textContent="−";
+  } else {
+    el.classList.remove("active");
+    answer.classList.remove("active");
+    el.querySelector(".faq-icon").textContent="+";
+  }
+}
+
+// Модалка
+const modal=document.getElementById("waitlistModal");
+const openBtns=document.querySelectorAll(".open-waitlist");
+const closeBtn=document.querySelector(".close-waitlist");
+openBtns.forEach(btn=>btn.addEventListener("click",(e)=>{e.preventDefault();modal.classList.add("active")}));
+closeBtn.addEventListener("click",()=>modal.classList.remove("active"));
+modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("active")});
+document.getElementById("waitlistForm")?.addEventListener("submit",e=>{e.preventDefault();alert("Спасибо! Мы свяжемся с вами для оплаты.");modal.classList.remove("active");e.target.reset()});
+</script>
+</body>
+</html>

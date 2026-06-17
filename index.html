@@ -74,25 +74,26 @@ nav ul li a:hover{color:var(--pink);background:rgba(212,118,138,.08)}
 nav ul li .btn{padding:8px 20px;font-size:.85rem}
 .mobile-btn{display:none;background:0 0;border:none;font-size:1.4rem;color:var(--text);cursor:pointer}
 
-/* HERO — убрана плашка под фото */
-.hero{padding-top:30px;padding-bottom:80px;background:var(--white);position:relative}
+/* HERO */
+.hero{padding-top:30px;padding-bottom:60px;background:var(--white);position:relative}
 .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mid);margin-bottom:1rem}
 .hero-eyebrow::before{content:'';width:32px;height:2px;background:var(--pink);border-radius:2px}
 .hero-title span{color:var(--pink)}
 .hero-sub{font-size:1.1rem;color:var(--text-mid);margin:1rem 0 1.5rem}
-.hero-photo-col{position:relative}
-.placeholder-photo{
-  background:var(--cream);
-  border-radius:32px;
+.hero-photo-col{
+  position:relative;
+  background:transparent;
+}
+.hero-video{
   width:100%;
-  aspect-ratio:1 / 1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--text-light);
-  font-size:1.2rem;
-  box-shadow:var(--shadow-lg);
+  max-height:520px;
+  height:auto;
+  border-radius:40px;   /* скругление увеличено */
+  display:block;
+  background:transparent !important;
+  background-color:transparent !important;
+  mix-blend-mode:multiply;
 }
 
 /* Сетки */
@@ -165,7 +166,7 @@ section {
 .benefits-cta{text-align:center;margin-top:40px}
 .price-badge{font-size:2.2rem;font-weight:700;color:var(--pink);margin:1rem 0}
 
-/* Блок бонуса — компактный, без больших расстояний */
+/* Блок бонуса */
 .bonus-row {
   display: flex;
   align-items: center;
@@ -229,6 +230,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
   .hero-photo-col{max-width:480px;margin:0 auto}
   .foot-grid{grid-template-columns:1fr 1fr}
   .bonus-row { gap: 10px; padding: 14px 20px; }
+  .hero-video { max-height: 450px; }
 }
 @media (max-width:768px){
   nav{display:none}
@@ -239,9 +241,12 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
   .foot-grid{grid-template-columns:1fr}
   .section-container{padding-top:20px}
   .card img { height: 200px; }
+  .hero-video { max-height: 380px; }
+  .hero { padding-bottom: 40px; }
 }
 @media (max-width:576px){
   h1{font-size:2rem}
+  .hero-video { max-height: 320px; }
 }
 </style>
 </head>
@@ -263,7 +268,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 </header>
 
 <main>
-<!-- HERO -->
+<!-- HERO с видео -->
 <section class="hero">
 <div class="container">
 <div class="hero-inner">
@@ -276,13 +281,13 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 </div>
 </div>
 <div class="hero-photo-col reveal">
-<div class="placeholder-photo">Фото</div>
+<video class="hero-video" autoplay loop muted playsinline src="https://www.image2url.com/r2/default/videos/1781734352932-ead11f82-7d9d-4a07-a15f-d8089adc968a.mov"></video>
 </div>
 </div>
 </div>
 </section>
 
-<!-- Вам точно нужен сборник -->
+<!-- Проблемы -->
 <section class="section-container">
 <div class="container">
 <div class="section-header reveal">
@@ -307,7 +312,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 <p>5 простых заготовок → 75+ блюд + бонус</p>
 </div>
 <div class="faq-inner" id="accordionRecipes">
-  
+
   <!-- Мясной соус -->
   <div class="faq-item reveal">
     <div class="faq-question" onclick="toggleAccordion(this)">🥫 Мясной соус<span class="faq-icon">+</span></div>
@@ -321,7 +326,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
       </ul>
     </div></div>
   </div>
-  
+
   <!-- Ростбиф -->
   <div class="faq-item reveal">
     <div class="faq-question" onclick="toggleAccordion(this)">🥩 Ростбиф<span class="faq-icon">+</span></div>
@@ -335,7 +340,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
       </ul>
     </div></div>
   </div>
-  
+
   <!-- Филе бережного запекания -->
   <div class="faq-item reveal">
     <div class="faq-question" onclick="toggleAccordion(this)">🍗 Филе бережного запекания<span class="faq-icon">+</span></div>
@@ -349,7 +354,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
       </ul>
     </div></div>
   </div>
-  
+
   <!-- Полуготовая говядина -->
   <div class="faq-item reveal">
     <div class="faq-question" onclick="toggleAccordion(this)">🥩 Полуготовая говядина<span class="faq-icon">+</span></div>
@@ -363,7 +368,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
       </ul>
     </div></div>
   </div>
-  
+
   <!-- Рваное мясо -->
   <div class="faq-item reveal">
     <div class="faq-question" onclick="toggleAccordion(this)">🍖 Рваное мясо<span class="faq-icon">+</span></div>
@@ -379,7 +384,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
   </div>
 </div>
 
-<!-- Бонус в одну строку — компактный -->
+<!-- Бонус в одну строку -->
 <div class="bonus-row">
   <span class="bonus-icon">🎁</span>
   <span class="bonus-text">В ПОДАРОК</span>
@@ -441,9 +446,9 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 <h2>Отзывы из клуба</h2>
 </div>
 <div class="reviews-grid">
-<div class="review-card reveal"><div class="screenshot-placeholder">⭐️ Скрин отзыва 1</div><p>“Теперь готовлю быстро!”</p></div>
-<div class="review-card reveal"><div class="screenshot-placeholder">⭐️ Скрин отзыва 2</div><p>“Муж в восторге”</p></div>
-<div class="review-card reveal"><div class="screenshot-placeholder">⭐️ Скрин отзыва 3</div><p>“Экономия времени огромная”</p></div>
+<div class="review-card reveal"><div class="screenshot-placeholder">⭐️ Скрин отзыва 1</div><p>"Теперь готовлю быстро!"</p></div>
+<div class="review-card reveal"><div class="screenshot-placeholder">⭐️ Скрин отзыва 2</div><p>"Муж в восторге"</p></div>
+<div class="review-card reveal"><div class="screenshot-placeholder">⭐️ Скрин отзыва 3</div><p>"Экономия времени огромная"</p></div>
 </div>
 <div class="benefits-cta"><a href="#" class="btn open-waitlist">Купить сборник</a></div>
 </div>

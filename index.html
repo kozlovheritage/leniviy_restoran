@@ -74,15 +74,13 @@ nav ul li a:hover{color:var(--pink);background:rgba(212,118,138,.08)}
 nav ul li .btn{padding:8px 20px;font-size:.85rem}
 .mobile-btn{display:none;background:0 0;border:none;font-size:1.4rem;color:var(--text);cursor:pointer}
 
-/* HERO — две колонки, справа пустышка */
+/* HERO — убрана плашка под фото */
 .hero{padding-top:30px;padding-bottom:80px;background:var(--white);position:relative}
 .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mid);margin-bottom:1rem}
 .hero-eyebrow::before{content:'';width:32px;height:2px;background:var(--pink);border-radius:2px}
 .hero-title span{color:var(--pink)}
 .hero-sub{font-size:1.1rem;color:var(--text-mid);margin:1rem 0 1.5rem}
-.hero-highlight{background:var(--warm-white);border-radius:var(--r-sm);padding:16px 20px;margin-top:24px;border:1px solid var(--border);font-weight:600}
-.hero-highlight span{color:var(--pink)}
 .hero-photo-col{position:relative}
 .placeholder-photo{
   background:var(--cream);
@@ -114,7 +112,7 @@ nav ul li .btn{padding:8px 20px;font-size:.85rem}
 .card .icon{font-size:2rem;margin-bottom:1rem;color:var(--pink)}
 .card img {
   width: 100%;
-  height: 260px; /* фиксированная высота как на втором фото */
+  height: 260px;
   object-fit: cover;
   border-radius: 16px;
   margin-bottom: 1rem;
@@ -128,14 +126,15 @@ nav ul li .btn{padding:8px 20px;font-size:.85rem}
 }
 
 /* Аккордеон */
-.accordion-item{margin-bottom:12px;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--border);background:var(--white)}
-.accordion-title{padding:18px 24px;cursor:pointer;font-weight:700;display:flex;justify-content:space-between;align-items:center;font-size:1.2rem}
-.accordion-title:hover{background:rgba(212,118,138,.04)}
-.accordion-title .icon{width:28px;height:28px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1rem}
-.accordion-title.active .icon{background:var(--pink);color:#fff;transform:rotate(45deg)}
-.accordion-content{max-height:0;overflow:hidden;transition:max-height .45s ease}
-.accordion-content.active{max-height:300px}
-.accordion-inner{padding:0 24px 24px}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-item{margin-bottom:12px;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--border);background:var(--white)}
+.faq-question{padding:18px 24px;cursor:pointer;font-weight:700;display:flex;justify-content:space-between;align-items:center;font-size:1.2rem}
+.faq-question:hover{background:rgba(212,118,138,.04)}
+.faq-question .faq-icon{width:28px;height:28px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.faq-question.active .faq-icon{background:var(--pink);color:#fff;transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.faq-answer.active{max-height:600px}
+.faq-answer-inner{padding:0 24px 24px}
 .recipe-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-top:12px}
 .recipe-list li{background:var(--cream);padding:6px 14px;border-radius:50px;font-size:.85rem}
 
@@ -166,23 +165,39 @@ section {
 .benefits-cta{text-align:center;margin-top:40px}
 .price-badge{font-size:2.2rem;font-weight:700;color:var(--pink);margin:1rem 0}
 
+/* Блок бонуса — компактный, без больших расстояний */
+.bonus-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+  background: var(--warm-white);
+  border-radius: var(--r);
+  padding: 18px 24px;
+  border: 1px solid var(--border);
+}
+.bonus-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.bonus-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pink);
+  letter-spacing: 0.05em;
+}
+.bonus-desc {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+}
+
 /* Отзывы */
 .reviews-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
 .review-card{background:var(--white);border-radius:var(--r);padding:16px;width:260px;border:1px solid var(--border);transition:var(--transition)}
 .review-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
 .screenshot-placeholder{background:var(--cream);height:180px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--text-light);margin-bottom:12px;font-size:.9rem}
-
-/* FAQ */
-.faq-inner{max-width:760px;margin:0 auto}
-.faq-item{margin-bottom:12px;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--border);background:var(--white)}
-.faq-question{padding:18px 24px;cursor:pointer;font-weight:700;display:flex;justify-content:space-between;align-items:center}
-.faq-question:hover{background:rgba(212,118,138,.04)}
-.faq-question .faq-icon{width:28px;height:28px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1rem}
-.faq-question.active .faq-icon{background:var(--pink);color:#fff;transform:rotate(45deg)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height .45s ease}
-.faq-answer.active{max-height:300px}
-.faq-answer-inner{padding:0 24px 20px}
-.faq-answer-inner p{margin:0}
 
 /* Футер */
 footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
@@ -213,6 +228,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
   .hero-inner{grid-template-columns:1fr;gap:40px}
   .hero-photo-col{max-width:480px;margin:0 auto}
   .foot-grid{grid-template-columns:1fr 1fr}
+  .bonus-row { gap: 10px; padding: 14px 20px; }
 }
 @media (max-width:768px){
   nav{display:none}
@@ -222,9 +238,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
   .grid-2,.grid-3{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
   .section-container{padding-top:20px}
-  .card img {
-    height: 200px; /* чуть меньше на мобильных */
-  }
+  .card img { height: 200px; }
 }
 @media (max-width:576px){
   h1{font-size:2rem}
@@ -256,12 +270,9 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 <div class="hero-content">
 <div class="hero-eyebrow reveal">Ленивый ресторан дома Веры Малыгиной</div>
 <h1 class="hero-title reveal reveal-delay-1">5 рецептов заготовок → <span>75+ рецептов</span> из них к столу!</h1>
-<p class="hero-sub reveal reveal-delay-1">Сборник основан на ресторанном методе кросс-использования продуктов, который помогает экономить время и средства на готовке</p>
+<p class="hero-sub reveal reveal-delay-1">Сборник основан на ресторанном методе кросс-использования продуктов, который помогает питаться разнообразно и сбалансированно, а сборку блюд сократить до 15 минут!</p>
 <div class="hero-actions reveal reveal-delay-2">
 <a href="#" class="btn open-waitlist">Купить сборник</a>
-</div>
-<div class="hero-highlight reveal reveal-delay-2">
-<span>🔥 Выход есть!</span> Сборник «Ленивый ресторан» — это метод, где из 1 простой заготовки мы можем собрать 15+ блюд! Быстро, вкусно и полезно!
 </div>
 </div>
 <div class="hero-photo-col reveal">
@@ -296,15 +307,85 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 <p>5 простых заготовок → 75+ блюд + бонус</p>
 </div>
 <div class="faq-inner" id="accordionRecipes">
-<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🥩 Ростбиф<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Сэндвич с ростбифом</li><li>Салат с ростбифом</li><li>Ростбиф с овощами</li><li>Паста с ростбифом</li><li>и еще 11+ блюд</li></ul></div></div></div>
-<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🍖 Рваное мясо<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Тако</li><li>Бургеры</li><li>Рис с мясом</li><li>Запеканка</li><li>и 12+</li></ul></div></div></div>
-<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🍗 Филе бережного запекания<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Филе с соусом</li><li>Цезарь</li><li>Теплый салат</li><li>и 13+</li></ul></div></div></div>
-<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🥫 Мясной соус<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Болоньезе</li><li>Лазанья</li><li>Картофельная запеканка</li><li>и 14+</li></ul></div></div></div>
-<div class="faq-item reveal"><div class="faq-question" onclick="toggleAccordion(this)">🥩 Полуготовая говядина<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner"><ul class="recipe-list"><li>Говядина по-французски</li><li>Строганов</li><li>Рагу</li><li>и 15+</li></ul></div></div></div>
+  
+  <!-- Мясной соус -->
+  <div class="faq-item reveal">
+    <div class="faq-question" onclick="toggleAccordion(this)">🥫 Мясной соус<span class="faq-icon">+</span></div>
+    <div class="faq-answer"><div class="faq-answer-inner">
+      <ul class="recipe-list">
+        <li>Яичница в перце</li><li>Сэндвич с фаршем</li><li>Тонкая пицца на лаваше</li>
+        <li>Оладьи из кабачка с мясным соусом</li><li>Блинные рулетики</li><li>Тако</li>
+        <li>Драники с мясным соусом</li><li>Густой суп с орзо</li><li>Паста болоньезе</li>
+        <li>Гречка по-купечески</li><li>Пикантные бобы</li><li>Картофельная запеканка</li>
+        <li>Экспресс-голубцы</li><li>Батат под сырной шапочкой</li><li>ПП-лазанья</li>
+      </ul>
+    </div></div>
+  </div>
+  
+  <!-- Ростбиф -->
+  <div class="faq-item reveal">
+    <div class="faq-question" onclick="toggleAccordion(this)">🥩 Ростбиф<span class="faq-icon">+</span></div>
+    <div class="faq-answer"><div class="faq-answer-inner">
+      <ul class="recipe-list">
+        <li>Сэндвич с карамелизированным луком</li><li>Брускетта с ростбифом, сыром и медовым соусом</li><li>Фриттата с ростбифом и шпинатом</li>
+        <li>Ростбиф по-французски</li><li>Лепешка из батата с рукколой и ростбифом</li><li>Окрошка на кефире</li>
+        <li>Суп с бататом и ростбифом</li><li>Теплый салат</li><li>Салат с ростбифом и маринованными огурцами</li>
+        <li>Тыква с ростбифом и ореховым соусом</li><li>Ризотто с ростбифом и вялеными томатами</li><li>Паста с грибами и ростбифом в сливочном соусе</li>
+        <li>Лапша с ростбифом и терияки</li><li>Боул с кус-кусом, овощами и ростбифом</li><li>Запеченный картофель с ростбифом</li>
+      </ul>
+    </div></div>
+  </div>
+  
+  <!-- Филе бережного запекания -->
+  <div class="faq-item reveal">
+    <div class="faq-question" onclick="toggleAccordion(this)">🍗 Филе бережного запекания<span class="faq-icon">+</span></div>
+    <div class="faq-answer"><div class="faq-answer-inner">
+      <ul class="recipe-list">
+        <li>Овсянка соленая</li><li>Сэндвич сытный</li><li>Нежные блинчики</li>
+        <li>Пицца белковая</li><li>Суп-пюре</li><li>Рамен</li>
+        <li>Цезарь ПП</li><li>Салат «На ужин»</li><li>Салат с рукколой, томатами и орехами</li>
+        <li>Салат с хрустящим рисом</li><li>Паста с грибами в сливочном соусе</li><li>Паста а-ля карбонара</li>
+        <li>Боул с рисом и овощами</li><li>Боул с киноа</li><li>Филе в глазури на рисовой подушке</li>
+      </ul>
+    </div></div>
+  </div>
+  
+  <!-- Полуготовая говядина -->
+  <div class="faq-item reveal">
+    <div class="faq-question" onclick="toggleAccordion(this)">🥩 Полуготовая говядина<span class="faq-icon">+</span></div>
+    <div class="faq-answer"><div class="faq-answer-inner">
+      <ul class="recipe-list">
+        <li>Гуляш</li><li>Овощное рагу с нежным мясом</li><li>Вок 5-минутка</li>
+        <li>Томленая говядина по-азиатски</li><li>Харчо экспресс</li><li>Говядина по-средиземноморски</li>
+        <li>Бигус</li><li>Бефстроганов с лесными грибами</li><li>Говядина BBQ с молодым картофелем</li>
+        <li>Говядина по-мексикански</li><li>Азу</li><li>ПП-пирог с капустой и мясом</li>
+        <li>Спринг-ролл</li><li>Беф бургиньон</li><li>Фрикасе</li>
+      </ul>
+    </div></div>
+  </div>
+  
+  <!-- Рваное мясо -->
+  <div class="faq-item reveal">
+    <div class="faq-question" onclick="toggleAccordion(this)">🍖 Рваное мясо<span class="faq-icon">+</span></div>
+    <div class="faq-answer"><div class="faq-answer-inner">
+      <ul class="recipe-list">
+        <li>Овсянка с нежным мясом, тыквой и страчателлой</li><li>Блины с мясной начинкой</li><li>Ленивые пирожки с мясом</li>
+        <li>Тако с рваным мясом</li><li>Сэндвич кранч</li><li>Чечевичный суп</li>
+        <li>Паста-суп с рваным мясом</li><li>Пастуший пирог с мясом</li><li>Бургер с рваным мясом</li>
+        <li>Чили с рваной говядиной</li><li>Салат с рваной говядиной, фасолью и кукурузой</li><li>Боул с овощами</li>
+        <li>Ригатони с черри, базиликом и перцем</li><li>Паста с пармезаном и черным перцем</li><li>Мясо «по-китайски» с рисом</li>
+      </ul>
+    </div></div>
+  </div>
 </div>
-<div class="card" style="margin-top:28px; text-align:center; background:var(--warm-white)">
-🎁 <strong>БОНУС:</strong> рецепты концентратов бульонов и 25+ рецептов супов для обеда!
+
+<!-- Бонус в одну строку — компактный -->
+<div class="bonus-row">
+  <span class="bonus-icon">🎁</span>
+  <span class="bonus-text">В ПОДАРОК</span>
+  <span class="bonus-desc">Рецепты концентратов бульонов и конструктор супов — 25+ рецептов!</span>
 </div>
+
 <div style="text-align:center; margin-top:32px">
 <span class="price-badge">990 ₽</span><br>
 <a href="#" class="btn open-waitlist">Купить за 990 ₽</a>
@@ -328,7 +409,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 </div>
 </section>
 
-<!-- Как работает сборник — с вашими фото i-12, i-13, i-14, одинаковый размер -->
+<!-- Как работает сборник -->
 <section class="section-container">
 <div class="container">
 <div class="section-header reveal">
@@ -400,7 +481,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 <div class="foot-col"><h4>Контакты</h4><ul><li><a href="#">Telegram</a></li><li><a href="#">ВКонтакте</a></li><li><a href="#">Почта</a></li></ul></div>
 <div class="foot-col"><h4>О проекте</h4><ul><li><a href="#sbornik">Сборник</a></li><li><a href="#reviews">Отзывы</a></li><li><a href="#faq">FAQ</a></li></ul></div>
 </div>
-<div class="foot-bottom"><p>© 2025 Вера Малыгина. Все права защищены.</p></div>
+<div class="foot-bottom"><p>© 2026 Вера Малыгина. Все права защищены.</p></div>
 </div>
 </footer>
 
@@ -427,11 +508,11 @@ const mbtn=document.getElementById("mbtn"),nav=document.getElementById("nav");
 mbtn.addEventListener("click",()=>{nav.classList.toggle("open");mbtn.textContent=nav.classList.contains("open")?"✕":"☰"});
 document.querySelectorAll("nav a").forEach(e=>e.addEventListener("click",()=>{nav.classList.remove("open");mbtn.textContent="☰"}));
 
-// Reveal анимация
+// Reveal
 const observer=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-// Аккордеон для рецептов
+// Аккордеон
 function toggleAccordion(el){
   const parent=el.parentElement;
   const answer=parent.querySelector(".faq-answer");

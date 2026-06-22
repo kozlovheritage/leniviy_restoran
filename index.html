@@ -298,7 +298,33 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
   h1{font-size:2rem}
   .hero-video { max-height: 320px; }
 }
+
+/* Модалка успешной покупки */
+.success-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);z-index:3000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s}
+.success-modal-overlay.active{opacity:1;visibility:visible}
+.success-modal-window{background:var(--warm-white);border-radius:var(--r);max-width:500px;width:92%;padding:40px 32px 36px;text-align:center;box-shadow:var(--shadow-lg);position:relative;transform:scale(0.88);transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.success-modal-overlay.active .success-modal-window{transform:scale(1)}
+.success-modal-window .close-success{position:absolute;top:14px;right:18px;font-size:26px;cursor:pointer;color:var(--text-light);background:none;border:none;line-height:1}
+.success-modal-window .success-icon{font-size:3.2rem;margin-bottom:12px}
+.success-modal-window h3{font-size:1.9rem;color:var(--pink);margin-bottom:10px}
+.success-modal-window .success-note{font-size:.95rem;color:var(--text-light);margin-bottom:24px}
+.success-btns{display:flex;flex-direction:column;gap:12px}
+.success-btns a{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:50px;font-size:.98rem;font-weight:700;text-decoration:none;transition:var(--transition)}
+.btn-yandex{background:#FFCC00 !important;color:#222 !important;box-shadow:0 6px 24px rgba(255,204,0,.35)}
+.btn-yandex:hover{background:#e6b800 !important;transform:translateY(-2px)}
+.btn-tg{background:#229ED9 !important;color:#fff !important;box-shadow:0 6px 24px rgba(34,158,217,.35)}
+.btn-tg:hover{background:#1a8bbf !important;transform:translateY(-2px)}
+.btn-max{background:#FF6B35 !important;color:#fff !important;box-shadow:0 6px 24px rgba(255,107,53,.35)}
+.btn-max:hover{background:#e5572a !important;transform:translateY(-2px)}
 </style>
+
+<!-- Продамус виджет -->
+<script>
+  window.prodamusDomain = 'vera-mlgn.payform.ru';
+  window.prodamusCurrency = 'rub';
+</script>
+<script src="https://widget.prodamus.ru/src/init.js" async></script>
+<link rel="stylesheet" href="https://widget.prodamus.ru/src/init.css">
 </head>
 <body>
 
@@ -601,20 +627,24 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 </div>
 </footer>
 
-<!-- Модалка -->
-<div class="modal-overlay" id="waitlistModal">
-<div class="modal-window">
-<span class="close-modal close-waitlist">&times;</span>
-<h3>Купить сборник</h3>
-<p>Оставьте заявку, и мы пришлём ссылку на оплату</p>
-<form id="waitlistForm">
-<div class="form-field"><label>Имя</label><input type="text" name="name" required placeholder="Ваше имя"></div>
-<div class="form-field"><label>Электронная почта</label><input type="email" name="email" required placeholder="email@example.com"></div>
-<div class="form-field"><label>Номер телефона</label><input type="tel" name="phone" placeholder="+7 (___) ___-__-__"></div>
-<div class="consent-item"><input type="checkbox" id="consentPdWait" required><label for="consentPdWait">Даю <a href="https://disk.yandex.ru/i/3RzYTim7hZO0Nw" target="_blank">согласие</a> на обработку персональных данных в соответствии с <a href="https://disk.yandex.ru/i/vIxEZ0HkXsj42Q" target="_blank">политикой</a> обработки ПД</label></div>
-<div class="consent-item"><input type="checkbox" id="consentMailWait" required><label for="consentMailWait">Даю согласие на получение рассылки (<a href="https://disk.yandex.ru/i/TpVA_h_RWP1UyQ" target="_blank">согласие на рассылку</a>)</label></div>
-<div class="modal-buttons"><button type="submit" class="btn">Отправить заявку</button></div>
-</form>
+<!-- Модалка успешной покупки -->
+<div class="success-modal-overlay" id="successModal">
+<div class="success-modal-window">
+<button class="close-success" id="closeSuccess" aria-label="Закрыть">&times;</button>
+<div class="success-icon">🎉</div>
+<h3>Спасибо за покупку!</h3>
+<p class="success-note">Сборник уже ждёт тебя — выбери удобный способ получить доступ:</p>
+<div class="success-btns">
+  <a href="https://disk.yandex.ru/d/E5tVR-Ns1jR1jg" target="_blank" class="btn-yandex">
+    📁 Забрать сборник (Яндекс Диск)
+  </a>
+  <a href="https://t.me/+YNNvnpqv-sQyOGZi" target="_blank" class="btn-tg">
+    ✈️ Забрать в Telegram
+  </a>
+  <a href="https://max.ru/join/QGIIE7CRo0ZWfJL6z75NUIstdDNijJ0MgCYhSI2iLb8" target="_blank" class="btn-max">
+    🔴 Забрать в MAX
+  </a>
+</div>
 </div>
 </div>
 
@@ -667,14 +697,25 @@ function toggleFaq(el){
   }
 }
 
-// Модалка
-const modal=document.getElementById("waitlistModal");
-const openBtns=document.querySelectorAll(".open-waitlist");
-const closeBtn=document.querySelector(".close-waitlist");
-openBtns.forEach(btn=>btn.addEventListener("click",(e)=>{e.preventDefault();modal.classList.add("active")}));
-closeBtn.addEventListener("click",()=>modal.classList.remove("active"));
-modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("active")});
-document.getElementById("waitlistForm")?.addEventListener("submit",e=>{e.preventDefault();alert("Спасибо! Мы свяжемся с вами для оплаты.");modal.classList.remove("active");e.target.reset()});
+// Продамус — открыть форму оплаты по всем CTA-кнопкам
+document.querySelectorAll(".open-waitlist").forEach(btn => {
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+    payformInit("vera-mlgn.payform.ru", { order_sum: 1290, currency: "rub" });
+  });
+});
+
+// Модалка успешной покупки
+const successModal = document.getElementById("successModal");
+function openSuccessModal() { successModal.classList.add("active"); document.body.style.overflow = "hidden"; }
+function closeSuccessModal() { successModal.classList.remove("active"); document.body.style.overflow = ""; }
+document.getElementById("closeSuccess").addEventListener("click", closeSuccessModal);
+successModal.addEventListener("click", e => { if (e.target === successModal) closeSuccessModal(); });
+
+// Статус оплаты от виджета Продамус
+window.addEventListener("message", function(event) {
+  if (event.data && event.data.status === "success") { openSuccessModal(); }
+});
 </script>
 </body>
 </html>

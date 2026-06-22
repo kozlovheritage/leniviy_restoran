@@ -299,6 +299,23 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
   .hero-video { max-height: 320px; }
 }
 
+/* Попап согласий перед оплатой */
+.consent-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);z-index:2500;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s}
+.consent-modal-overlay.active{opacity:1;visibility:visible}
+.consent-modal-window{background:var(--warm-white);border-radius:var(--r);max-width:480px;width:92%;padding:36px 28px 32px;box-shadow:var(--shadow-lg);position:relative;transform:scale(0.9);transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.consent-modal-overlay.active .consent-modal-window{transform:scale(1)}
+.consent-modal-window .close-consent{position:absolute;top:14px;right:18px;font-size:26px;cursor:pointer;color:var(--text-light);background:none;border:none;line-height:1}
+.consent-modal-window h3{font-size:1.6rem;color:var(--pink);margin-bottom:6px;text-align:center}
+.consent-modal-window .consent-subtitle{font-size:.9rem;color:var(--text-light);text-align:center;margin-bottom:20px}
+.consent-modal-window .consent-item{display:flex;align-items:flex-start;gap:12px;margin:12px 0;font-size:.85rem;color:var(--text-mid)}
+.consent-modal-window .consent-item input[type=checkbox]{width:18px;height:18px;min-width:18px;margin-top:2px;accent-color:var(--pink);cursor:pointer}
+.consent-modal-window .consent-item a{color:var(--pink);text-decoration:underline}
+.consent-modal-window .consent-item label{cursor:pointer;line-height:1.45}
+.consent-pay-btn{display:block;width:100%;margin-top:22px;padding:15px;border-radius:50px;border:none;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;transition:var(--transition);background:var(--pink);color:#fdf3f3;box-shadow:0 8px 32px rgba(212,118,138,.35)}
+.consent-pay-btn:hover:not(:disabled){background:var(--pink-dark);transform:translateY(-2px)}
+.consent-pay-btn:disabled{background:#ccc !important;box-shadow:none;cursor:not-allowed;transform:none}
+.consent-price-note{text-align:center;font-size:.78rem;color:var(--text-light);margin-top:10px}
+
 /* Модалка успешной покупки */
 .success-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);z-index:3000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s}
 .success-modal-overlay.active{opacity:1;visibility:visible}
@@ -627,6 +644,29 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
 </div>
 </footer>
 
+<!-- Попап согласий перед оплатой -->
+<div class="consent-modal-overlay" id="consentModal">
+<div class="consent-modal-window">
+<button class="close-consent" id="closeConsent" aria-label="Закрыть">&times;</button>
+<h3>Условия покупки</h3>
+<p class="consent-subtitle">Пожалуйста, ознакомьтесь и подтвердите согласие</p>
+<div class="consent-item">
+  <input type="checkbox" id="cb-pd">
+  <label for="cb-pd">Даю <a href="https://disk.yandex.ru/i/3RzYTim7hZO0Nw" target="_blank">согласие</a> на обработку персональных данных в соответствии с <a href="https://disk.yandex.ru/i/vIxEZ0HkXsj42Q" target="_blank">политикой обработки ПД</a></label>
+</div>
+<div class="consent-item">
+  <input type="checkbox" id="cb-mail">
+  <label for="cb-mail">Даю согласие на получение рассылки (<a href="https://disk.yandex.ru/i/TpVA_h_RWP1UyQ" target="_blank">согласие на рассылку</a>)</label>
+</div>
+<div class="consent-item">
+  <input type="checkbox" id="cb-offer">
+  <label for="cb-offer">Принимаю условия <a href="https://disk.yandex.ru/d/_R5Vp-Q3C_Inhw" target="_blank">публичной оферты</a></label>
+</div>
+<button class="consent-pay-btn" id="consentPayBtn" disabled>Перейти к оплате — 1290 ₽</button>
+<p class="consent-price-note">Вы будете перенаправлены на защищённую страницу оплаты Продамус</p>
+</div>
+</div>
+
 <!-- Модалка успешной покупки -->
 <div class="success-modal-overlay" id="successModal">
 <div class="success-modal-window">
@@ -697,15 +737,47 @@ function toggleFaq(el){
   }
 }
 
-// Продамус — открыть форму оплаты по всем CTA-кнопкам
+// ── Попап согласий ──
+const consentModal  = document.getElementById("consentModal");
+const consentPayBtn = document.getElementById("consentPayBtn");
+const cbPd          = document.getElementById("cb-pd");
+const cbMail        = document.getElementById("cb-mail");
+const cbOffer       = document.getElementById("cb-offer");
+
+function openConsentModal() {
+  consentModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+function closeConsentModal() {
+  consentModal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+// Активировать кнопку только когда ВСЕ три галочки стоят
+function updatePayBtn() {
+  consentPayBtn.disabled = !(cbPd.checked && cbMail.checked && cbOffer.checked);
+}
+[cbPd, cbMail, cbOffer].forEach(cb => cb.addEventListener("change", updatePayBtn));
+
+// CTA → открыть попап согласий
 document.querySelectorAll(".open-waitlist").forEach(btn => {
   btn.addEventListener("click", function(e) {
     e.preventDefault();
-    payformInit("vera-mlgn.payform.ru", { order_sum: 1290, currency: "rub" });
+    openConsentModal();
   });
 });
 
-// Модалка успешной покупки
+// Закрыть попап согласий
+document.getElementById("closeConsent").addEventListener("click", closeConsentModal);
+consentModal.addEventListener("click", e => { if (e.target === consentModal) closeConsentModal(); });
+
+// Кнопка «Перейти к оплате» → Продамус
+consentPayBtn.addEventListener("click", function() {
+  closeConsentModal();
+  payformInit("vera-mlgn.payform.ru", { order_sum: 1290, currency: "rub" });
+});
+
+// ── Модалка успешной покупки ──
 const successModal = document.getElementById("successModal");
 function openSuccessModal() { successModal.classList.add("active"); document.body.style.overflow = "hidden"; }
 function closeSuccessModal() { successModal.classList.remove("active"); document.body.style.overflow = ""; }

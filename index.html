@@ -192,6 +192,7 @@ section {
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
+  text-align: center;
   transition: var(--transition);
 }
 .collection-card:hover {
@@ -216,6 +217,11 @@ section {
 }
 .collection-card .price-block {
   margin: 12px 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
 }
 .collection-card .price-block .new-price {
   font-size: 1.8rem;
@@ -419,7 +425,6 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
     <p>5 рецептов заготовок, 75 разнообразных блюд из них на каждый день!</p>
     <div class="price-block">
       <span class="new-price">1290 ₽</span>
-      <span class="old-price">1590 ₽</span>
     </div>
     <div class="bonus-tag">+ бонус</div>
   </div>
@@ -427,7 +432,7 @@ footer{background:var(--cream);padding:48px 0 24px;margin-top:40px}
   <div class="collection-card reveal">
     <img class="collection-img" src="https://s10.iimage.su/s/21/glyPpcuxEHHhjjWacqOtG9zqQDEinYlfV4wKXjEZf.png" alt="Обложка сборника Бульоны концентраты">
     <h3>«Бульоны концентраты»</h3>
-    <p>О выборе сырья, приготовлении концентратов, хранении в заготовках и использовании в разные блюда<br>+ лайфхаки по приготовлению вкусного, наваристого и полезного концентрата<br>+ 16 рецептов супов-конструкторов</p>
+    <p>О выборе сырья, приготовлении концентратов, хранении в заготовках и использовании в разные блюда<br>+ 16 рецептов супов-конструкторов</p>
     <div class="price-block">
       <span class="new-price">0 ₽</span>
       <span class="old-price">1290 ₽</span>
@@ -785,4 +790,4 @@ window.addEventListener("message", function(event) {
 });
 </script>
 </body>
-</html>
+</h
